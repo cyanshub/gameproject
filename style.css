@@ -1,0 +1,165 @@
+#cards {
+  display: flex; /* 軸: 預設為橫向排列 */
+  flex-wrap: wrap; /* 讓 flex item 換行 */
+  width: 85%;  /* 使寬度和標頭一致 */
+  margin: 0 auto; /* 置中 */
+}
+
+
+.card {
+  /* 卡片在容器裡的排版 */
+  /* flex:
+  flex-basis = 決定卡片排列長度的在容器占比(預設為橫向排列) 100/13=7...9
+  flex-grow = 決定有多餘的空間時, 是否要延伸空間補滿
+  flex-shrink = 決定空間不夠大時, 是否要收縮內部元素
+  vw = 相對單位,代表垂直方向占百分之多少之視窗大小 */
+    
+  flex: 7% 1 1; /* 使卡片分配剩餘的空間 */
+  height: 8vw;
+  border: 2px solid #e0e0e0;
+
+
+  /* 卡片內部元素的排版 */
+  display: flex;
+
+  /* main-axis */
+  flex-direction: column; 
+  justify-content: space-around;
+
+
+  margin: 2px; /* 調整邊距 */
+  box-sizing: border-box; 
+}
+
+
+
+.card img {
+  /* 設定卡片屬性內的img元素 */
+  /* 由於卡片內圖元素太大, 故限定圖片元素只占容器寬度30% */
+  max-width: 30%;
+
+  /* 設定交叉軸, 讓圖片元素置中 */
+  align-self: center;
+
+}
+
+.card p {
+  /* 設定卡片屬性內的p元素 */
+  /* 修改預設 marin, 使文字不要超出邊界;微調文字大小 */
+  margin: 3px;
+  font-size: 10px;
+
+}
+
+.card p:last-child {
+  /* 設定卡片屬性內的最後一個p元素 */
+  /* 利用 transform 的 rotate 調整元素的角度 */
+  transform: rotate(180deg);
+
+}
+
+
+
+/* 新增牌背樣式 */
+.back{
+  background: url('https://assets-lighthouse.alphacamp.co/uploads/image/file/9222/ExportedContentImage_00.png');
+
+  background-size: cover;
+}
+
+
+/* 新增配對成功樣式 */
+.paired{
+  background-color: #dae0e3;
+}
+
+
+
+/* 新增遊戲介面樣式 */
+#header {
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column; 
+  align-items: flex-end;
+  width: 85%;
+  /* border: solid red 1px; */
+}
+
+#header .title {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  /* border: solid red 1px; */
+}
+
+
+#header .title img {
+  max-width: 3em;
+}
+
+#header .title h2 {
+  padding-left: 0.5em;
+}
+
+#header .score {
+  margin: 0;
+  color: #6c90ac;
+}
+
+#header .tried {
+  margin-top: 0;
+}
+
+
+
+/* 設計配對失敗的動畫特效 */
+.wrong {
+  animation-name: wrongAnimation; /* 呼叫要播放的動畫名稱 */
+  animation-duration: 0.2s; /* 設定動畫每次播放的時間 */
+  animation-iteration-count: 5; /* 設計動畫每次播放的次數 */
+}
+
+
+/* 使用關鍵影格 @keyframes 設定動畫漸變流程 */
+@keyframes wrongAnimation{
+  /* 直接設定到 100% 時的影格, 也可以設定不同百分比的影格 */
+  to {
+    border: 2px solid #ffd54f
+  }
+}
+
+
+
+/* 設計遊戲結束畫面: Game finished */
+.completed {
+  position: absolute;
+  z-index: 999;
+  top: 33vh;
+  background-color: RGBA(232, 246, 254, 0.8);
+  width: 100vw;
+  padding: 50px 0;
+}
+
+.completed>p {
+  font-size: 1.5em;
+  color: black;
+  text-align: center;
+  margin: 0;
+}
+
+.completed>p:first-child {
+  font-size: 3em;
+  font-weight: 700;
+  color: #758d9a;
+}
+
+
+
+
+
+
+
+
+
+
+
